@@ -1,28 +1,25 @@
 # zswap
 
-Edit the size,algo,threads, and num_devices variables to configure swap devices
-Defaults to a single lzo multithreaded half-ram device
+Zswap extends the amount of usable ram one has. It does this by utilizing compressed zram block devices.It is not related to the kernel zswap module!
 
-Run:
-# zswap.sh start
+Zswap defaults to use a single multithreaded lzo compressed half-ram swap disk
+Edit the following parameters in zswap.sh to configure zswap:
 
-Stop:
-# zswap.sh stop
+Parameter     Usage                                     |  Example
+------------|-------------------------------------------|---------------
+size        | Set the size a block device(K,M,G)        |  size=(1G)
+algo        | Set the compression algorithm (lzo|lz4)   |  algo=(lzo)
+threads     | Set the # of threads to compress with     |  threads=(2)
+num_devices | Set the # of swap devices from zswap      |  num_devices=1
 
-Restart:
-# zswap.sh restart
+Use the following commands to control zswap:
 
-If you use the systemd units, move  zswap.service to /usr/lib/systemd/system/
-Enable zswap with:
-
-Run on boot:
-# systemctl enable zswap
-
-Run:
-# systemctl start zswap
-
-Stop:
-# systemctl stop zswap
-
-Restart:
-# systemctl restart zswap 
+Command                    |  Usage
+---------------------------|------------------------------------
+zswap.sh start             |  Start zswap
+zswap.sh stop              |  Stop zswap
+zswap.sh restart           |  Restart zswap
+systemctl enable zswap     |  Start zswap on boot using systemd
+systemctl start zswap      |  Start zswap using systemd
+systemctl stop zswap       |  Stop zswap using systemd
+systemctl restart zswap    |  Restart zswap using systemd
