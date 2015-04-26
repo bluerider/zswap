@@ -5,7 +5,7 @@ Description=Zram-based swap (compressed RAM block devices)
 Type=oneshot
 ExecStart=/usr/lib/systemd/scripts/zswap.sh start
 ExecStop=/usr/lib/systemd/scripts/zswap.sh stop
-ExecRestart=/usr/lib/systemd/scripts/zswap.sh restart
+ExecReload=/usr/lib/systemd/scripts/zswap.sh restart
 RemainAfterExit=yes
 
 [Install]
