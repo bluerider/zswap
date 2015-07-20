@@ -15,7 +15,7 @@ declare -r num_devices=1
 
 makeSwap() {
  mkswap "$1"
- swapon "$1"
+ swapon --priority 100 "$1"
 }
 
 stopSwap() {
@@ -25,7 +25,7 @@ stopSwap() {
 
 resetSwap() {
  swapoff "$1";
- swapon -f "$1";
+ swapon -f --priority 100 "$1";
 }
 
 ## makeSwap function accepts integer as $1
